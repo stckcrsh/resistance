@@ -107,6 +107,33 @@
           }
         }
       }
+    },
+    "resistance-game": {
+      "root": "libs/resistance/game",
+      "sourceRoot": "libs/resistance/game/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/resistance/game/tsconfig.lib.json",
+              "libs/resistance/game/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/resistance/game/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/resistance/game/jest.config.js",
+            "tsConfig": "libs/resistance/game/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -28,6 +28,9 @@
     "resistance-e2e": {
       "tags": [],
       "implicitDependencies": ["resistance"]
+    },
+    "resistance-game": {
+      "tags": []
     }
   }
 }
