@@ -66,7 +66,6 @@ export default {
           [BOOLEAN_STATE.FALSE]: 0,
         }
       );
-    console.log(results);
     if (results[BOOLEAN_STATE.TRUE] >= 3) {
       return { winner: G.goodGuys };
     }

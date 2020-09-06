@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resistanceGame multiplayer test 1`] = `
+Object {
+  "G": Object {
+    "badGuys": Array [],
+    "currentTurn": Object {
+      "isRejected": 2,
+      "isSuccess": 2,
+      "mission": Array [],
+      "team": Array [],
+      "votes": Array [],
+    },
+    "goodGuys": Array [],
+    "history": Array [],
+    "missionPlayers": Array [
+      2,
+      3,
+      2,
+      3,
+      3,
+    ],
+    "turnNumber": 0,
+  },
+  "_redo": Array [],
+  "_stateID": 0,
+  "_undo": Array [],
+  "ctx": Object {
+    "_activePlayersMoveLimit": null,
+    "_activePlayersNumMoves": Object {
+      "0": 0,
+    },
+    "_nextActivePlayers": null,
+    "_prevActivePlayers": Array [],
+    "activePlayers": Object {
+      "0": "buildTeam",
+    },
+    "currentPlayer": "0",
+    "numMoves": 0,
+    "numPlayers": 2,
+    "phase": null,
+    "playOrder": Array [
+      "0",
+      "1",
+    ],
+    "playOrderPos": 0,
+    "turn": 1,
+  },
+  "deltalog": undefined,
+  "isActive": true,
+  "isConnected": true,
+  "log": Array [],
+  "plugins": Object {
+    "events": Object {
+      "data": Object {},
+    },
+    "random": Object {
+      "data": Object {
+        "seed": "kerex4re",
+      },
+    },
+  },
+}
+`;
