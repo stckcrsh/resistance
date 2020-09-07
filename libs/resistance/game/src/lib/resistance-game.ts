@@ -14,7 +14,12 @@ export const enum MISSION_VOTE {
   FAIL,
 }
 
-interface ResistanceGame {
+export interface Player {
+  playerID: number;
+  playerName: string;
+}
+
+export interface ResistanceGame {
   currentTurn: {
     votes: { playerId: number; vote: TEAM_VOTE }[];
     mission: { playerId: number; vote: MISSION_VOTE }[];
@@ -26,6 +31,9 @@ interface ResistanceGame {
   goodGuys: number[];
   missionPlayers: number[];
   turnNumber: number;
+  missionNumber: number;
+  rejectionCount: number;
+  players: Record<number, Player>;
   history: {
     votes: { playerId: number; vote: TEAM_VOTE }[];
     mission: { playerId: number; vote: MISSION_VOTE }[];
@@ -35,7 +43,8 @@ interface ResistanceGame {
   }[];
 }
 
-export default {
+export const Game = {
+  name: 'Resistance',
   setup: (ctx): ResistanceGame => ({
     currentTurn: {
       votes: [],
@@ -44,10 +53,13 @@ export default {
       isRejected: BOOLEAN_STATE.NA,
       isSuccess: BOOLEAN_STATE.NA,
     },
+    players: {},
     badGuys: [],
     goodGuys: [],
     missionPlayers: [2, 3, 2, 3, 3],
     turnNumber: 0,
+    missionNumber: 0,
+    rejectionCount: 0,
     history: [],
   }),
   endIf: (G: ResistanceGame, ctx) => {
@@ -145,6 +157,7 @@ export default {
                 });
               } else {
                 G.currentTurn.isRejected = BOOLEAN_STATE.TRUE;
+                G.rejectionCount++;
                 ctx.events.endStage();
                 ctx.events.endTurn();
               }
@@ -168,6 +181,7 @@ export default {
                 ? BOOLEAN_STATE.TRUE
                 : BOOLEAN_STATE.FALSE;
 
+              G.missionNumber++;
               ctx.events.endStage();
               ctx.events.endTurn();
             }

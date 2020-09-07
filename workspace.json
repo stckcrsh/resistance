@@ -67,7 +67,10 @@
               "apps/resistance/tsconfig.app.json",
               "apps/resistance/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/resistance/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/resistance/**/*"
+            ]
           }
         },
         "test": {
@@ -102,8 +105,13 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["apps/resistance-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/resistance-e2e/**/*"]
+            "tsConfig": [
+              "apps/resistance-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/resistance-e2e/**/*"
+            ]
           }
         }
       }
@@ -122,7 +130,10 @@
               "libs/resistance/game/tsconfig.lib.json",
               "libs/resistance/game/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/resistance/game/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/resistance/game/**/*"
+            ]
           }
         },
         "test": {
@@ -130,6 +141,67 @@
           "options": {
             "jestConfig": "libs/resistance/game/jest.config.js",
             "tsConfig": "libs/resistance/game/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "resistance-api": {
+      "root": "apps/resistance-api",
+      "sourceRoot": "apps/resistance-api/src",
+      "projectType": "application",
+      "prefix": "resistance-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/resistance-api",
+            "main": "apps/resistance-api/src/main.ts",
+            "tsConfig": "apps/resistance-api/tsconfig.app.json",
+            "assets": [
+              "apps/resistance-api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/resistance-api/src/environments/environment.ts",
+                  "with": "apps/resistance-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "resistance-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/resistance-api/tsconfig.app.json",
+              "apps/resistance-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/resistance-api/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/resistance-api/jest.config.js",
+            "tsConfig": "apps/resistance-api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
